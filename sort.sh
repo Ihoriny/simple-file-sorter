@@ -9,6 +9,11 @@ fi
 
 DIR_PATH="${1%/}/"
 
+if [ ! -w "$DIR_PATH" ]; then
+    echo "No write permissions for $DIR_PATH"
+    exit 1
+fi
+
 for file in "$DIR_PATH"*; do
     
     if [ -f "$file" ] && [ ! -L "$file" ]; then
